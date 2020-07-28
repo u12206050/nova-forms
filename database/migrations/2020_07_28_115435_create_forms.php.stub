@@ -1,0 +1,55 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateForms extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        $this->down();
+
+        Schema::create('forms', function (Blueprint $table) {
+            $table->id();
+            $table->string('label');
+            $table->timestamps();
+        });
+
+        Schema::create('form_translations', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('form_id');
+            $table->char('locale')->index();
+            $table->string('title');
+            $table->string('slug');
+            $table->text('excerpt')->nullable();
+            $table->boolean('is_active')->default(true);
+            $table->text('fields')->nullable();
+            $table->text('terms')->nullable();
+            $table->string('btn')->default('Send');
+            $table->string('msg')->default('Thank you');
+            $table->string('email')->nullable();
+            $table->timestamps();
+
+            $table->unique(['form_id', 'locale']);
+            $table->unique(['slug', 'locale']);
+            $table->foreign('form_id')->references('id')->on('forms')->onDelete('cascade');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('form_translations');
+        Schema::dropIfExists('forms');
+    }
+}

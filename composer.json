@@ -1,0 +1,38 @@
+{
+    "name": "day4/nova-forms",
+    "description": "A Laravel Nova tool.",
+    "keywords": [
+        "laravel",
+        "nova",
+        "form"
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=7.1.0",
+        "day4/switch-locale": "^0.4",
+        "whitecube/nova-flexible-content": "^0.2",
+        "mll-lab/graphql-php-scalars": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Day4\\NovaForms\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Day4\\NovaForms\\NovaFormsServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "php artisan novaforms:install"
+        ]
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

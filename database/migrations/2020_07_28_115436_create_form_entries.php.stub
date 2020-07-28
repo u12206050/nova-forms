@@ -1,0 +1,38 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateFormEntries extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('form_entries', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('form_id');
+            $table->char('locale')->index();
+            $table->text('fields')->nullable();
+            $table->text('terms')->nullable();
+            $table->tinyInteger('read')->default(0);
+            $table->timestamps();
+
+            $table->foreign('form_id')->references('id')->on('forms')->onDelete('restrict');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('form_entries');
+    }
+}

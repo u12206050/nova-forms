@@ -1,0 +1,33 @@
+scalar Value @scalar(class: "MLL\\GraphQLScalars\\Mixed")
+
+extend type Query {
+  # Form queries
+  allForms: [Form!]! @all(model: "Day4\\NovaForms\\Models\\Form", scopes: ["active"])
+  form(id: ID @eq, slug: String @eq): Form @first(model: "Day4\\NovaForms\\Models\\Form", scopes: ["active"])
+}
+
+extend type Mutation {
+  # Form mutations
+  submit(formId: Int!, fields: [FormField!]!): SubmitStatus @field(resolver: "Day4\\NovaForms\\GraphQL\\Mutations\\FormSubmit", args: ["formId", "fields"])
+}
+
+input FormField {
+  n: String!
+  v: Value
+}
+
+type Form {
+  id: ID!
+  title: String
+  slug: String
+  excerpt: String
+  fields: String
+  terms: String
+  btn: String
+}
+
+type SubmitStatus {
+  success: Boolean!
+  msg: String
+  errors: [String]
+}
