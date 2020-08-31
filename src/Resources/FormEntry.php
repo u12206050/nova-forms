@@ -12,7 +12,7 @@ use Laravel\Nova\Fields\KeyValue;
 use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class FormEntry extends NovaTranslatableResource
+class FormEntry extends TranslatableResource
 {
     /**
      * The model the resource corresponds to.
