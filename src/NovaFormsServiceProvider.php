@@ -2,13 +2,13 @@
 
 namespace Day4\NovaForms;
 
+use Day4\NovaForms\Console\InstallNovaForms;
+use Day4\NovaForms\Resources\Form;
+use Day4\NovaForms\Resources\FormEntry;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Events\ServingNova;
 use Laravel\Nova\Nova;
-use Day4\NovaForms\Resources\Form;
-use Day4\NovaForms\Resources\FormEntry;
-use Day4\NovaForms\Console\InstallNovaForms;
 
 class NovaFormsServiceProvider extends ServiceProvider
 {

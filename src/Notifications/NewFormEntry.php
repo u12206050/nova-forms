@@ -2,13 +2,13 @@
 
 namespace Day4\NovaForms\Notifications;
 
+use Day4\NovaForms\Models\FormEntry;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\URL;
-use Day4\NovaForms\Models\FormEntry;
+use Illuminate\Support\HtmlString;
 
 class NewFormEntry extends Notification implements ShouldQueue
 {

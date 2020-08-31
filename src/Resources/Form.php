@@ -2,23 +2,24 @@
 
 namespace Day4\NovaForms\Resources;
 
+use Day4\NovaTranslatableResource;
+use Day4\SwitchLocale\Language;
+use Drobee\NovaSluggable\Slug;
+use Drobee\NovaSluggable\SluggableText;
 use Illuminate\Http\Request;
-use Laravel\Nova\Resource;
-use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\File;
-use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Heading;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\KeyValue;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\Heading;
-use Laravel\Nova\Fields\KeyValue;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Fields\Textarea;
-use Drobee\NovaSluggable\SluggableText;
-use Drobee\NovaSluggable\Slug;
-use Day4\SwitchLocale\Language;
+use Laravel\Nova\Resource;
 use Whitecube\NovaFlexibleContent\Flexible;
 
-class Form extends Resource
+class Form extends NovaTranslatableResource
 {
     /**
      * The model the resource corresponds to.
@@ -106,14 +107,7 @@ class Form extends Resource
                     KeyValue::make(__('Options'), 'options')->rules('json'),
                     Boolean::make(__('Allow multiple'), 'multi'),
                     Boolean::make(__('Required'), 'req'),
-                ])
-                ->addLayout('Custom field', 'custom', [
-                    Text::make(__('Label'), 'lbl'),
-                    Select::make(__('Component'), 'comp')
-                        ->options([
-                            'integration' => __('Select Integration')
-                        ]),
-                ])->button('Add Field')->stacked(),
+                ])->button(__('Add Field'))->stacked(),
             Flexible::make(__('Terms'), 'terms')
                 ->addLayout('Downloadable T&Cs ', 'file', [
                     Text::make(__('Label'), 'lbl'),

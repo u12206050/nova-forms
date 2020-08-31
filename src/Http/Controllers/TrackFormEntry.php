@@ -2,10 +2,10 @@
 
 namespace Day4\NovaForms\Http\Controllers;
 
+use Day4\NovaForms\Models\FormEntry;
+use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Day4\NovaForms\Models\FormEntry;
 
 class TrackFormEntry extends Controller
 {

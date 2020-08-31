@@ -2,17 +2,17 @@
 
 namespace Day4\NovaForms\Resources;
 
+use Day4\NovaTranslatableResource;
 use Illuminate\Http\Request;
-use Laravel\Nova\Resource;
-use Laravel\Nova\Fields\ID;
-use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Boolean;
-use Laravel\Nova\Fields\KeyValue;
-use Laravel\Nova\Fields\DateTime;
 use Laravel\Nova\Fields\BelongsTo;
+use Laravel\Nova\Fields\Boolean;
+use Laravel\Nova\Fields\DateTime;
+use Laravel\Nova\Fields\ID;
+use Laravel\Nova\Fields\KeyValue;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class FormEntry extends Resource
+class FormEntry extends NovaTranslatableResource
 {
     /**
      * The model the resource corresponds to.
