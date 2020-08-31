@@ -2,7 +2,7 @@
 
 namespace Day4\NovaForms\Resources;
 
-use Day4\NovaTranslatableResource;
+use Day4\Nova\TranslatableResource;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\BelongsTo;
 use Laravel\Nova\Fields\Boolean;

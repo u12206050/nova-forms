@@ -2,7 +2,7 @@
 
 namespace Day4\NovaForms\Resources;
 
-use Day4\NovaTranslatableResource;
+use Day4\Nova\TranslatableResource;
 use Day4\SwitchLocale\Language;
 use Drobee\NovaSluggable\Slug;
 use Drobee\NovaSluggable\SluggableText;
@@ -19,7 +19,7 @@ use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Resource;
 use Whitecube\NovaFlexibleContent\Flexible;
 
-class Form extends NovaTranslatableResource
+class Form extends TranslatableResource
 {
     /**
      * The model the resource corresponds to.

@@ -9,7 +9,7 @@
     "license": "MIT",
     "require": {
         "php": ">=7.1.0",
-        "day4/nova-translatable-resource": "^3.0",
+        "day4/nova-translatable-resource": ">=3.0.1",
         "day4/switch-locale": ">=0.4",
         "mll-lab/graphql-php-scalars": "^3.0",
         "whitecube/nova-flexible-content": "^0.2"
@@ -28,11 +28,6 @@
     },
     "config": {
         "sort-packages": true
-    },
-    "scripts": {
-        "post-update-cmd": [
-            "php artisan novaforms:install"
-        ]
     },
     "minimum-stability": "dev",
     "prefer-stable": true
