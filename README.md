@@ -7,6 +7,7 @@ Tracks read entries when the user opens the email.
 
 ** Built with/for **
 
+  - PHP 7.4
   - Nova >= v3.4.0
   - astrotomic/laravel-translatable
   - day4/switch-locale
