@@ -26,30 +26,30 @@ class Form extends TranslatableResource
      *
      * @var string
      */
-    public static $model = \Day4\NovaForms\Models\Form::class;
+    public static string $model = \Day4\NovaForms\Models\Form::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
      *
      * @var string
      */
-    public static $title = 'title';
+    public static string $title = 'title';
 
     /**
      * The columns that should be searched.
      *
      * @var array
      */
-    public static $search = [
+    public static array $search = [
         'title',
     ];
 
-    public static $group = 'Forms';
+    public static string $group = 'Forms';
 
     /**
      * Get the fields displayed by the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
     public function fields(Request $request)
@@ -129,7 +129,7 @@ class Form extends TranslatableResource
     /**
      * Get the cards available for the request.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
     public function cards(Request $request)
@@ -142,7 +142,7 @@ class Form extends TranslatableResource
     /**
      * Get the filters available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
     public function filters(Request $request)
@@ -153,7 +153,7 @@ class Form extends TranslatableResource
     /**
      * Get the lenses available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
     public function lenses(Request $request)
@@ -164,7 +164,7 @@ class Form extends TranslatableResource
     /**
      * Get the actions available for the resource.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @return array
      */
     public function actions(Request $request)

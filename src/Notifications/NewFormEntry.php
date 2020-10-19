@@ -13,12 +13,13 @@ use Illuminate\Support\HtmlString;
 class NewFormEntry extends Notification implements ShouldQueue
 {
     use Queueable;
-    public $entry;
+
+    public FormEntry $entry;
 
     /**
      * Create a new notification instance.
      *
-     * @return void
+     * @param FormEntry $entry
      */
     public function __construct(FormEntry $entry)
     {
@@ -40,7 +41,7 @@ class NewFormEntry extends Notification implements ShouldQueue
      * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
+     * @return MailMessage
      */
     public function toMail($notifiable)
     {

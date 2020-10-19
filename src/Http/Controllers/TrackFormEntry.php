@@ -5,16 +5,18 @@ namespace Day4\NovaForms\Http\Controllers;
 use Day4\NovaForms\Models\FormEntry;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 
 class TrackFormEntry extends Controller
 {
     use ValidatesRequests;
+
     /**
      * Handle the incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param $entryId
+     * @return Response
      */
     public function __invoke($entryId)
     {

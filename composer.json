@@ -8,7 +8,7 @@
     ],
     "license": "MIT",
     "require": {
-        "php": ">=7.1.0",
+        "php": ">=7.4",
         "day4/nova-translatable-resource": "3.0.3",
         "day4/switch-locale": ">=0.5",
         "mll-lab/graphql-php-scalars": "^3.0",

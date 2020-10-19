@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Form extends Model implements TranslatableContract
+class   Form extends Model implements TranslatableContract
 {
     use Translatable;
 
@@ -21,8 +21,8 @@ class Form extends Model implements TranslatableContract
     /**
      * Scope a query to only include active pages.
      *
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
+     * @param Builder $query
+     * @return Builder
      */
     public function scopeActive($query)
     {
