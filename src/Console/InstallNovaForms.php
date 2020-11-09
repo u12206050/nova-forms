@@ -24,10 +24,12 @@ class InstallNovaForms extends Command
         $this->call('migrate');
 
         $file = base_path('graphql/schema.graphql');
-        $current = file_get_contents($file);
-        if (strpos($current, '#import forms.graphql') === false) {
-            $current .= "#import forms.graphql\n";
-            file_put_contents($file, $current);
+        if (file_exists($file)) {
+            $current = file_get_contents($file);
+            if (strpos($current, '#import forms.graphql') === false) {
+                $current .= "#import forms.graphql\n";
+                file_put_contents($file, $current);
+            }
         }
 
         $this->info('Validating GraphQL');
