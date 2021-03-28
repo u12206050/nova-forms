@@ -12,7 +12,7 @@
         "day4/nova-translatable-resource": "^3.1",
         "day4/switch-locale": ">=0.5",
         "graham-campbell/throttle": "^8.0",
-        "mll-lab/graphql-php-scalars": "^3.0",
+        "mll-lab/graphql-php-scalars": "^4.0",
         "whitecube/nova-flexible-content": "^0.2"
     },
     "autoload": {
