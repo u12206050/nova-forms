@@ -40,8 +40,8 @@ class FormSubmit
         }
 
         $form = Form::findOrFail($formId);
-        $fieldDefs = isset($form->fields) ? json_decode($form->fields) : [];
-        $termDefs = isset($form->terms) ? json_decode($form->terms) : [];
+        $fieldDefs = json_decode($form->fields ?? '[]');
+        $termDefs = json_decode($form->terms ?? '[]');
 
         $fields = [];
         $terms = [];
