@@ -39,7 +39,15 @@ class FormSubmit
             $values[$F['n']] = $F['v'];
         }
 
-        $form = Form::findOrFail($formId);
+        $locale = app()->getLocale();
+        /* @var Form $form */
+        $form = Form::query()->find($formId);
+        if (! $form || ! $form->hasTranslation($locale)) {
+            return [
+                'success' => false,
+                'msg' => 'Form not found for this language'
+            ];
+        }
         $fieldDefs = json_decode($form->fields ?? '[]');
         $termDefs = json_decode($form->terms ?? '[]');
 
@@ -48,8 +56,8 @@ class FormSubmit
 
         try {
             foreach ($fieldDefs as $F) {
-                if (isset($values[$F->key])) {
-                    if (isset($F->attributes->min)) {
+                if ($values[$F->key] ?? false) {
+                    if ($F->attributes->min ?? false) {
                         if ($F->layout == 'number') {
                             if ($values[$F->key] < $F->attributes->min) {
                                 throw new \Exception($F->attributes->lbl . ": needs to be greater than " . $F->attributes->min);
@@ -58,7 +66,7 @@ class FormSubmit
                             throw new \Exception($F->attributes->lbl . ": needs to be longer than " . $F->attributes->min . " characters");
                         }
                     }
-                    if (isset($F->attributes->max)) {
+                    if ($F->attributes->max ?? false) {
                         if ($F->layout == 'number') {
                             if ($values[$F->key] > $F->attributes->max) {
                                 throw new \Exception($F->attributes->lbl . ": needs to be less than " . $F->attributes->max);
@@ -73,13 +81,13 @@ class FormSubmit
                     } else $v = filter_var($values[$F->key], FILTER_SANITIZE_STRING);
 
                     $fields[$F->attributes->lbl] = $v;
-                } else if (isset($F->attributes->req) && $F->attributes->req) {
+                } else if ($F->attributes->req ?? false) {
                     throw new \Exception($F->attributes->lbl . ": is required");
                 }
             }
             foreach ($termDefs as $T) {
-                $b = isset($values[$T->key]) ? (bool) $values[$T->key] : false;
-                if (isset($T->attributes->req) && $T->attributes->req && !$b) {
+                $b = (bool) ($values[$T->key] ?? false);
+                if ($T->attributes->req ?? false && !$b) {
                     throw new \Exception($T->attributes->lbl . ": is required");
                 } else {
                     $terms[$T->attributes->lbl] = $b;
@@ -92,7 +100,6 @@ class FormSubmit
             ];
         }
 
-        $locale = app()->getLocale();
         $entry = FormEntry::create([
             'form_id' => $formId,
             'locale' => $locale,
@@ -100,7 +107,7 @@ class FormSubmit
             'terms' => $terms,
         ]);
 
-        if (isset($form->email)) {
+        if ($form->email ?? false) {
             Notification::route('mail', $form->email)
                 ->notify(new NewFormEntry($entry));
         }
